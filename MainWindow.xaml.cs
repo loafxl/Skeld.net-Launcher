@@ -2,8 +2,8 @@
 using System.ComponentModel;
 using System.IO;
 using System.Net;
-using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Security.Authentication;
 using System.Windows;
 using System.Windows.Navigation;
 
@@ -11,9 +11,21 @@ namespace skeldswitcher //made by LoafX
 {
     public partial class MainWindow : Window
     {
+        private string RegionInfoLocation;
+        private string rootDir;
+        public const SslProtocols tls11prot = (SslProtocols)0x00000300;
+        public const SecurityProtocolType Tls11 = (SecurityProtocolType)tls11prot;
+
         public MainWindow()
         {
             InitializeComponent();
+
+
+            Guid localLowId = new Guid("A520A1A4-1780-4FF6-BD18-167343C5AF16");
+            string locallow = GetKnownFolderPath(localLowId);
+            RegionInfoLocation = locallow + @"\Innersloth\Among Us\regionInfo.dat";
+
+            rootDir = Directory.GetCurrentDirectory();
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
@@ -43,22 +55,33 @@ namespace skeldswitcher //made by LoafX
 
         private void DLCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
+            File.Delete(RegionInfoLocation);
+            File.Move(rootDir + @"\regionInfo.dat", RegionInfoLocation);
+            File.Delete(rootDir + @"\regionInfo.dat");
             SwitchButtonText.Text = "Switched";
         }
         private void SwitchButton_Click(object sender, RoutedEventArgs e)
         {
-            Guid localLowId = new Guid("A520A1A4-1780-4FF6-BD18-167343C5AF16");
-            string locallow = GetKnownFolderPath(localLowId);
-            string RegionInfoLocation = locallow + @"\Innersloth\Among Us";
 
-            if (File.Exists(RegionInfoLocation + @"\regionInfo.dat"))
+            if (File.Exists(RegionInfoLocation))
             {
                 SwitchButton.IsEnabled = false;
                 SwitchButtonText.Text = "Switching";
 
-                WebClient webClient = new WebClient();
-                webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DLCompletedCallback);
-                webClient.DownloadFileAsync(new Uri("https://skeld.net/setup/regionInfo.dat"), RegionInfoLocation + @"\regionInfo.dat");
+                try
+                {
+                    using (WebClient webClient = new WebClient())
+                    {
+                        webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DLCompletedCallback);
+                        webClient.DownloadFileAsync(new Uri("https://skeld.net/setup/regionInfo.dat"), rootDir + @"\regionInfo.dat");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var crashlog = ex.ToString();
+                    MessageBox.Show(crashlog);
+                }
+
             }
             else
             {
