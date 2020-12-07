@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Skeld.net Switcher" ResizeMode="CanMinimize" Height="400" Width="300" MinHeight="400" MaxHeight="400" MaxWidth="300" MinWidth="300" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        Title="Skeld.net Launcher" ResizeMode="CanMinimize" Height="360" Width="300" MinHeight="360" MaxHeight="360" MaxWidth="300" MinWidth="300" ScrollViewer.VerticalScrollBarVisibility="Disabled">
     <Window.Resources>
         <Style x:Key="MyButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -28,23 +28,25 @@
     </Window.Resources>
 
     <Grid Background="Black">
-        <TextBlock Name="Title" Text="Skeld.net Switcher" Foreground="White" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="24.361,15,21.032,320.425" Width="246"/>
-        <TextBlock Name="Desc" TextWrapping="Wrap" TextAlignment="Center" Foreground="White" FontSize="18" FontFamily="Arial" HorizontalAlignment="Center" Margin="24.361,67.935,21.032,107.115" Width="246.607">
-        Skeld.net is the world's first custom Among Us server. It has custom features such as Discord integration, custom gamemodes, a proper anticheat, and more. Come join the
+        <TextBlock Name="Title" Text="Skeld.net Launcher" Foreground="White" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="26,21,22,282" Width="246"/>
+        <TextBlock Name="Desc" TextWrapping="Wrap" TextAlignment="Center" Foreground="White" FontSize="18" FontFamily="Arial" HorizontalAlignment="Center" Margin="10,68,10,87" Width="274">
+        Skeld.net is the world's first public Among Us server. We have custom gamemodes, a proper anticheat, and more. <LineBreak/>
+        Check out the
         <Hyperlink Foreground="#40D440" 
         NavigateUri="https://discord.gg/Bpkcw6ZT3c"
         RequestNavigate="Hyperlink_RequestNavigate">
         Discord
         </Hyperlink>   
-        server and if you love it, please support us by donating to our 
+        server for more information! If you enjoy please support us by becoming a
         <Hyperlink Foreground="#40D440"
         NavigateUri="https://www.patreon.com/skeld_net"
         RequestNavigate="Hyperlink_RequestNavigate">
         Patreon.
         </Hyperlink>
         </TextBlock>
-        <Button Name="SwitchButton" Style="{StaticResource MyButton}" Click="SwitchButton_Click" HorizontalAlignment="Stretch" Margin="83.819,287,77.265,39" Background="Black" BorderBrush="{x:Null}">
-            <TextBlock Name="SwitchButtonText" Text="Switch" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" FontFamily="Arial" Margin="0,0,0,0" Width="100"/>
+        <Button Name="LaunchButton" Style="{StaticResource MyButton}" Click="LaunchButton_Click" HorizontalAlignment="Stretch" Margin="80,260,80,29" Background="Black" BorderBrush="{x:Null}">
+            <TextBlock Name="LaunchButtonText" Text="Launch" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" FontFamily="Arial" Margin="0,2,0,-32" Width="100" Height="57"/>
         </Button>
+
     </Grid>
 </Window>
