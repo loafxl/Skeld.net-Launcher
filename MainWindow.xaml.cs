@@ -39,7 +39,6 @@ namespace skeldswitcher //made by LoafX
             if (File.Exists(RegionInfoLocation))
             {
                 LaunchButton.IsEnabled = false;
-                LaunchButtonText.Text = "Switching";
 
                 try
                 {

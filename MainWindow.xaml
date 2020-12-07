@@ -29,7 +29,7 @@
 
     <Grid Background="Black">
         <TextBlock Name="Title" Text="Skeld.net Launcher" Foreground="White" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="26,21,22,282" Width="246"/>
-        <TextBlock Name="Desc" TextWrapping="Wrap" TextAlignment="Center" Foreground="White" FontSize="18" FontFamily="Arial" HorizontalAlignment="Center" Margin="10,68,10,87" Width="274">
+        <TextBlock Name="Desc" TextWrapping="Wrap" TextAlignment="Center" Foreground="White" FontSize="18" FontFamily="Arial" HorizontalAlignment="Center" Margin="26,68,22,87" Width="246">
         Skeld.net is the world's first public Among Us server. We have custom gamemodes, a proper anticheat, and more. <LineBreak/>
         Check out the
         <Hyperlink Foreground="#40D440" 
@@ -47,6 +47,5 @@
         <Button Name="LaunchButton" Style="{StaticResource MyButton}" Click="LaunchButton_Click" HorizontalAlignment="Stretch" Margin="80,260,80,29" Background="Black" BorderBrush="{x:Null}">
             <TextBlock Name="LaunchButtonText" Text="Launch" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" FontFamily="Arial" Margin="0,2,0,-32" Width="100" Height="57"/>
         </Button>
-
     </Grid>
 </Window>
